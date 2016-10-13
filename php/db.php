@@ -68,5 +68,14 @@ class DB{
 			return 1;
 		}
 	}   
+
+	public function getServices(){
+		$query = "SELECT TIPO,CODIGO,DESCRIPCION FROM `wp_librorec_servicio`";
+
+		$result = mysqli_query($this->link,$query);
+		//mysqli_close($conn);
+		return $result;
+	}
+
 };
 ?>

@@ -122,19 +122,16 @@
     </div>
 </div>
 <div class="row">
-    <div class="medium-6 large-6 columns">
-    <!-- 
-            <select name="tipo" required="">
-                <option value="1">Queja</option>
-                <option value="2">Reclamo</option>
-            <select>
-             -->
+    <div class="medium-6 large-6 columns">    
              <select name="tipo" required="">
                 <?php
-                    require_once("db.php");
+                    require_once("php/db.php");
                     $db  = new DB();
+                    $result = $db->getServices();
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='".$row[TIPO]."'>".$row[DESCRIPCION]."</option>";                        
+                    }                    
                  ?>
-
             <select>
             <span class="error" style="display:none;"></span>
     </div>
