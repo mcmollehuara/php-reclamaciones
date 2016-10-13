@@ -24,8 +24,11 @@
             }
             .footerblue{
                 display:none;
-            }           
+            }                     
         }
+        .error{
+                color:red;                
+            }  
         </style>
         <script>
 
@@ -37,10 +40,10 @@
                         
     </head>
     <body>
-        <div>
+        <div class="row">
         <div class="medium-12 large-12 columns header-print">
         </div>
-         <div class="medium-12 large-12 columns header-print">
+         <div class="medium-12 large-12 columns">
             <span id="success_message" style="display:none"></span>
         </div>
         
@@ -49,51 +52,51 @@
                 <div class="row">
                 
     <div class="medium-6 large-6 columns">
-        <input name="nombres" type="text" placeholder="Nombres*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="nombres" name="nombres" type="text" placeholder="Nombres*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
     <div class="medium-6 large-6 columns">
-        <input name="apellidos" type="text" placeholder="Apellidos*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="apellidos" name="apellidos" type="text" placeholder="Apellidos*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">
     <div class="medium-6 large-6 columns">
-        <select name="tipoDocumento">
+        <select id="tipoDocumento" name="tipoDocumento">
         <option value="1">DNI</option>
         <option value="2">Carné de Extrangería</option>
         <select>                
-        <span class="error" style="display:none;"></span>
+        <small class="error" style="display:none;"></small>
     </div>
     <div class="medium-6 large-6 columns">
-        <input name="numeroDocumento" type="text" placeholder="Numero documento*" required="">
-        <span class="error" style="display:none;"></span>        
+        <input id="numeroDocumento" name="numeroDocumento" type="text" placeholder="Numero documento*" required="">
+        <small class="error" style="display:none;"></small>    
     </div>
 </div>
 <div class="row">
     <div class="medium-12 large-12 columns">
-        <input name="direccion" type="text" placeholder="Direccion*" required="">
-        <span class="error" style="display:none;"></span>    
+        <input id="direccion" name="direccion" type="text" placeholder="Direccion*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">
     <div class="medium-6 large-6 columns">    
-        <input name="provincia" type="text" placeholder="Provincia*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="provincia"  name="provincia" type="text" placeholder="Provincia*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
     <div class="medium-6 large-6 columns">    
-        <input name="distrito" type="text" placeholder="Distrito*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="distrito" name="distrito" type="text" placeholder="Distrito*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">
     <div class="medium-6 large-6 columns">
-        <input name="telefono" type="text" placeholder="Telefono*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="telefono" name="telefono" type="text" placeholder="Telefono*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
     <div class="medium-6 large-6 columns">            
-        <input name="email" type="email" placeholder="Email*" required="">
-        <span class="error" style="display:none;"></span>
+        <input id="email" name="email" type="email" placeholder="Email*" required="">
+        <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">
@@ -123,7 +126,14 @@
 </div>
 <div class="row">
     <div class="medium-6 large-6 columns">    
-             <select name="tipo" required="">
+             <select id="tipo" name="tipo" required="">
+                <option value="1">Queja</option>
+        <option value="2">Reclamo</option>
+            <select>
+            <small class="error" style="display:none;"></small>
+    </div>
+      <div class="medium-6 large-6 columns">
+            <select id="servicio"  name="servicio" required="">
                 <?php
                     require_once("php/db.php");
                     $db  = new DB();
@@ -133,14 +143,7 @@
                     }                    
                  ?>
             <select>
-            <span class="error" style="display:none;"></span>
-    </div>
-      <div class="medium-6 large-6 columns">
-            <select name="servicio" required="">
-                <option value="1">Servicio 1</option>
-                <option value="2">Servicio 2</option>
-            <select>
-            <span class="error" style="display:none;"></span>
+            <small class="error" style="display:none;"></small>
     </div>
  
     <div class="medium-12 large-12 columns">
@@ -151,18 +154,17 @@
 </div>
 <div class="row">
     <div class="large-12 columns"> 
-        <textarea name="descripcion" rows="4" cols="50" required="" placeholder="Descripción">
-        </textarea>
-        <span class="error" style="display:none;"></span>
+        <textarea  id="descripcion"  name="descripcion" rows="4" cols="50" required="" placeholder="Descripcion*"></textarea>
+        <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">
 <div class="medium-6 large-6 columns">
-            <select name="formaRespuesta" required="">
+            <select id="formaRespuesta" name="formaRespuesta" required="">
                 <option value="1">Físico</option>
                 <option value="2">Email</option>
             <select>
-            <span class="error" style="display:none;"></span>
+            <small class="error" style="display:none;"></small>
     </div>
 </div>
 <div class="row">

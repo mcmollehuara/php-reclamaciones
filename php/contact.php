@@ -56,75 +56,64 @@ class Contact{
 		
 		/* Email Validation */
 		if(!$email || mb_strlen($email = trim($email)) == 0)
-			$this->setError('email','required field');
+			$this->setError('email','Email campo requerido');
 		else{
 			if(!is_email($email))
-				$this->setError('email', 'invalid email');
+				$this->setError('email', 'Email inválido');
 			else if(mb_strlen($email) > 120)
-				$this->setError('email', 'too long! 120');
+				$this->setError('email', 'Email máximo 120');
 		}
 		
 		/* apellidos Validation */
 		if(!$apellidos || mb_strlen($apellidos = trim($apellidos)) == 0)
-			$this->setError('apellidos', 'campo requerido');
+			$this->setError('apellidos', 'Apellidos campo requerido');
 		else if(mb_strlen(trim($apellidos)) > 50)
-			$this->setError('apellidos', 'El valor es mayor al permitido');
+			$this->setError('apellidos', 'Apellidos es mas largo al permitido');
 	
 		/* nombres Validation */
 	    if(!$nombres || mb_strlen($nombres = trim($nombres)) == 0)
-			$this->setError('nombres', 'campo requerido');
+			$this->setError('nombres', 'Nombres campo requerido');
 		else if(mb_strlen(trim($nombres)) > 50)
-			$this->setError('nombres', 'El valor es mayor al permitido');
+			$this->setError('nombres', 'Nombres es mas largo al permitido');
 
 /* tipoDocumento Validation */
 	    if(!$tipoDocumento || mb_strlen($tipoDocumento = trim($tipoDocumento)) == 0)
-			$this->setError('tipoDocumento', 'campo requerido');
+			$this->setError('tipoDocumento', 'Tipo Documento campo requerido');
 		else if(mb_strlen(trim($tipoDocumento)) > 2)
-			$this->setError('tipoDocumento', 'El valor es mayor al permitido');
+			$this->setError('tipoDocumento', 'Tipo documento  mayor al permitido');
 
 /* numeroDocumento Validation */
 	    if(!$numeroDocumento || mb_strlen($numeroDocumento = trim($numeroDocumento)) == 0)
-			$this->setError('numeroDocumento', 'campo requerido');
+			$this->setError('numeroDocumento', 'Número Documento campo requerido');
 		else if(mb_strlen(trim($numeroDocumento)) > 20)
-			$this->setError('numeroDocumento', 'El valor es mayor al permitido');									
+			$this->setError('numeroDocumento', 'Número de documento  mayor al permitido');									
 
 /* direccion Validation */
 	    if(!$direccion || mb_strlen($direccion = trim($direccion)) == 0)
-			$this->setError('direccion', 'campo requerido');
+			$this->setError('direccion', 'Dirección campo requerido');
 		else if(mb_strlen(trim($direccion)) > 100)
-			$this->setError('direccion', 'El valor es mayor al permitido');
+			$this->setError('direccion', 'Dirección  mayor al permitido');
 
 
 /* distrito Validation */
 	    if(!$distrito || mb_strlen($distrito = trim($distrito)) == 0)
-			$this->setError('distrito', 'campo requerido');
+			$this->setError('distrito', 'Distrito campo requerido');
 		else if(mb_strlen(trim($distrito)) > 50)
-			$this->setError('distrito', 'El valor es mayor al permitido');												
+			$this->setError('distrito', 'Distrito  mayor al permitido');												
 
 
 /* provincia Validation */
 	    if(!$provincia || mb_strlen($provincia = trim($provincia)) == 0)
-			$this->setError('provincia', 'campo requerido');
+			$this->setError('provincia', 'Provincia campo requerido');
 		else if(mb_strlen(trim($provincia)) > 50)
-			$this->setError('provincia', 'El valor es mayor al permitido');
+			$this->setError('provincia', 'Provincia mayor al permitido');
 
 
 /* telefono Validation */
 	    if(!$telefono || mb_strlen($telefono = trim($telefono)) == 0)
-			$this->setError('telefono', 'campo requerido');
+			$this->setError('telefono', 'Teléfono campo requerido');
 		else if(mb_strlen(trim($telefono)) > 50)
-			$this->setError('telefono', 'El valor es mayor al permitido');
-
-
-		/* Email Validation */
-		if(!$email || mb_strlen($email = trim($email)) == 0)
-			$this->setError('email','required field');
-		else{
-			if(!is_email($email))
-				$this->setError('email', 'invalid email');
-			else if(mb_strlen($email) > 100)
-				$this->setError('email', 'too long! 120');
-		}
+			$this->setError('telefono', 'Teléfono mayor al permitido');
 
 
 /* tutorNombres Validation */
@@ -153,25 +142,25 @@ class Contact{
 
 /* tipo Validation */
 	    if(!$tipo || mb_strlen($tipo = trim($tipo)) == 0)
-			$this->setError('tipo', 'campo requerido');
+			$this->setError('tipo', 'Tipo campo requerido');
 		else if(mb_strlen(trim($tipo)) > 2)
-			$this->setError('tipo', 'El valor es mayor al permitido');
+			$this->setError('tipo', 'Valor no permitido');
 
 /* servicio Validation */
 	    if(!$servicio || mb_strlen($servicio = trim($servicio)) == 0)
-			$this->setError('servicio', 'campo requerido');
+			$this->setError('servicio', 'Servicio campo requerido');
 		else if(mb_strlen(trim($servicio)) > 2)
 			$this->setError('servicio', 'El valor es mayor al permitido');
 
 /* descripcion Validation */
 	    if(!$descripcion || mb_strlen($descripcion = trim($descripcion)) == 0)
-			$this->setError('descripcion', 'campo requerido');
+			$this->setError('descripcion', 'Descripción campo requerido');
 		else if(mb_strlen(trim($descripcion)) > 2000)
 			$this->setError('descripcion', 'El valor es mayor al permitido');
 
 /* formaRespuesta Validation */
 	    if(!$formaRespuesta || mb_strlen($formaRespuesta = trim($formaRespuesta)) == 0)
-			$this->setError('formaRespuesta', 'campo requerido');
+			$this->setError('formaRespuesta', 'Forma de respuesta campo requerido');
 		else if(mb_strlen(trim($formaRespuesta)) > 2)
 			$this->setError('formaRespuesta', 'El valor es mayor al permitido');
 
@@ -254,11 +243,11 @@ class Contact{
 		."Servicio: ".$servicio." \n"
 		."Descripción: ".$descripcion." \n"
 		."Forma de respuesta:  ".($formaRespuesta==1?" Físico ":" Email ")." \n\n"
-		"Antenderemos muy pronto su reclamación";
+		."Antenderemos muy pronto su reclamación";
 			
 		$headers			= "From: ".EMAIL_FROM_NAME." <".EMAIL_FROM_ADDR.">";
 		$subject            = MESSAGE_SUBJECT." Nro. ".$uniqueId;
-		return mail($email,$subject,$message_body,$headers);
+		mail($email,$subject,$message_body,$headers);
 	}
 	
 	public function setError($field, $errmsg){

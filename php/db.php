@@ -54,7 +54,7 @@ class DB{
 		EMAIL,`TUTOR-NOMBRES`, `TUTOR-APELLIDOS`, `TUTOR-TIPODOCUMENTO`,`TUTOR-NUMERODOCUMENTO`,
 		TIPO, SERVICIO, DESCRIPCION, FORMARESPUESTA)
 		VALUES
-		('uniqueId',now(),'100','$apellidos','$nombres','$tipoDocumento',
+		('$uniqueId',now(),'100','$apellidos','$nombres','$tipoDocumento',
 		'$numeroDocumento','$direccion','$distrito','$provincia','$telefono',
 		'$email','$tutorNombres', '$tutorApellidos', '$tutorTipoDocumento','$tutorNumeroDocumento',
 		'$tipo','$servicio','$descripcion','$formaRespuesta')";
