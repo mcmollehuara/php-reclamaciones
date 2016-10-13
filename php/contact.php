@@ -30,6 +30,7 @@ class Contact{
 	public function processNewMessage(){
 		// $menorEdad= $_POST['menorEdad'];
 		// $origen= $_POST['origen'];
+		$uniqueId= uniqid();
 		$apellidos= $_POST['apellidos'];
 		$nombres= $_POST['nombres'];
 		$tipoDocumento= $_POST['tipoDocumento'];
@@ -209,15 +210,18 @@ class Contact{
 		}
 		/* No errors, insert in db*/
 		else{
-			if(($ret = $this->db->dbNewMessage($apellidos,$nombres,$tipoDocumento,
+			if(($ret = $this->db->dbNewMessage($uniqueId, $apellidos,$nombres,$tipoDocumento,
 		$numeroDocumento,$direccion,$distrito,$provincia,$telefono,
 		$email,$tutorNombres,$tutorApellidos,$tutorTipoDocumento,$tutorNumeroDocumento,
 		$tipo,$servicio,$descripcion, $formaRespuesta)) > 0){
-				$json = array('result' 		=> 1); 
+				$json = array('result' 		=> $uniqueId); 
 				if(SEND_EMAIL){					
 					$name = $nombres.' '.$apellidos;
-					$this->sendEmail($email,$name,$descripcion);
-				}					
+					$this->sendEmail($uniqueId, $apellidos,$nombres,$tipoDocumento,
+		$numeroDocumento,$direccion,$distrito,$provincia,$telefono,
+		$email,$tutorNombres,$tutorApellidos,$tutorTipoDocumento,$tutorNumeroDocumento,
+		$tipo,$servicio,$descripcion, $formaRespuesta);
+				}
 			}	
 			else
 				$json = array('result' 		=> -2); /* something went wrong in database insertion  */
@@ -227,15 +231,34 @@ class Contact{
 		}
 	}
 	
-	public function sendEmail($email,$name,$descripcion){
+	public function sendEmail($uniqueId, $apellidos,$nombres,$tipoDocumento,
+		$numeroDocumento,$direccion,$distrito,$provincia,$telefono,
+		$email,$tutorNombres,$tutorApellidos,$tutorTipoDocumento,$tutorNumeroDocumento,
+		$tipo,$servicio,$descripcion, $formaRespuesta){
 		/* Just format the email text the way you want ... */
-		$message_body		= "Hola, ".$name."(".$email.") se envio un email como constancia a tu \n"
-									."email: ".$email."\n"
-									."message: "."\n"
-									.$descripcion; 
+		$message_body		= "Se ha registrado la siguiente reclamación: \n"
+		."Nombres: ".$nombres." \n"
+		."Apellidos: ".$nombres." \n"
+		."Tipo Documento: ".($tipoDocumento==1?" DNI ":" Carné de estrangería ")." \n"
+		."Número Documento: ".$numeroDocumento." \n"
+		."Dirección: ".$direccion." \n"		
+		."Distrito: ".$distrito." \n"
+		."Provincia: ".$provincia." \n"
+		."Telefono: ".$telefono." \n"
+		."Email: ".$email." \n"
+		."Tutor Nombres: ".$tutorNombres." \n"
+		."Tutor Apellidos: ".$tutorApellidos." \n"
+		."Tutor Tipo Documento: ".($tutorTipoDocumento==1?" DNI ":" Carné de estrangería ")." \n"
+		."Tutor Numero Documento: ".$tutorNumeroDocumento." \n"
+		."Tipo: ".($tipo==1?" Queja ":" Reclamo ")." \n"
+		."Servicio: ".$servicio." \n"
+		."Descripción: ".$descripcion." \n"
+		."Forma de respuesta:  ".($formaRespuesta==1?" Físico ":" Email ")." \n\n"
+		"Antenderemos muy pronto su reclamación";
+			
 		$headers			= "From: ".EMAIL_FROM_NAME." <".EMAIL_FROM_ADDR.">";
-		
-		return mail(EMAIL_TO,MESSAGE_SUBJECT,$message_body,$headers);
+		$subject            = MESSAGE_SUBJECT." Nro. ".$uniqueId;
+		return mail($email,$subject,$message_body,$headers);
 	}
 	
 	public function setError($field, $errmsg){

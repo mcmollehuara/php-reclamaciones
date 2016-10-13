@@ -33,11 +33,11 @@ var contact = {
 			   dataType	: 'json',
 			   data		: $('#ContactForm').serialize(),
 			   success	: function(data,textStatus){
-							  //hide the ajax loader
-							  $('#loader').hide();
-							  if(data.result == '1'){
+							  //hide the ajax loader							  
+							  if(data.result.length > 1){
 							      //show success message
-								  $('#success_message').empty().html('Message sent');
+								  $('#success_message').show();
+								  $('#success_message').empty().html('Se ha generado la reclamación Nro.: '+data.result);
 								  //reset all form fields
 								  $('#ContactForm')[0].reset();	
 								  //envelope animation

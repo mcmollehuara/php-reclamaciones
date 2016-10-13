@@ -16,7 +16,7 @@ class DB{
 	}
 	
 	public function dbNewMessage(
-		$apellidos,$nombres,$tipoDocumento,
+		$uniqueId, $apellidos,$nombres,$tipoDocumento,
 		$numeroDocumento,$direccion,$distrito,$provincia,$telefono,
 		$email,$tutorNombres,$tutorApellidos,$tutorTipoDocumento,$tutorNumeroDocumento,
 		$tipo,$servicio,$descripcion, $formaRespuesta){
@@ -49,12 +49,12 @@ class DB{
 		// 		  VALUES('$name','$email','$website','$message')";
 
 		$query = "INSERT INTO wp_libroreclamacion
-		(FECHA, ORIGEN, APELLIDOS, NOMBRES, TIPODOCUMENTO,
+		(UNIQUEID,FECHA, ORIGEN, APELLIDOS, NOMBRES, TIPODOCUMENTO,
 		NUMERODOCUMENTO, DIRECCION, DISTRITO, PROVINCIA, TELEFONO,
 		EMAIL,`TUTOR-NOMBRES`, `TUTOR-APELLIDOS`, `TUTOR-TIPODOCUMENTO`,`TUTOR-NUMERODOCUMENTO`,
 		TIPO, SERVICIO, DESCRIPCION, FORMARESPUESTA)
 		VALUES
-		(	now(),'100','$apellidos','$nombres','$tipoDocumento',
+		('uniqueId',now(),'100','$apellidos','$nombres','$tipoDocumento',
 		'$numeroDocumento','$direccion','$distrito','$provincia','$telefono',
 		'$email','$tutorNombres', '$tutorApellidos', '$tutorTipoDocumento','$tutorNumeroDocumento',
 		'$tipo','$servicio','$descripcion','$formaRespuesta')";

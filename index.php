@@ -40,6 +40,10 @@
         <div>
         <div class="medium-12 large-12 columns header-print">
         </div>
+         <div class="medium-12 large-12 columns header-print">
+            <span id="success_message" style="display:none"></span>
+        </div>
+        
          
             <form id="ContactForm" method="post">
                 <div class="row">
@@ -119,9 +123,18 @@
 </div>
 <div class="row">
     <div class="medium-6 large-6 columns">
+    <!-- 
             <select name="tipo" required="">
                 <option value="1">Queja</option>
                 <option value="2">Reclamo</option>
+            <select>
+             -->
+             <select name="tipo" required="">
+                <?php
+                    require_once("db.php");
+                    $db  = new DB();
+                 ?>
+
             <select>
             <span class="error" style="display:none;"></span>
     </div>
@@ -161,7 +174,7 @@
                 <span id="loader" class="loader" style="display:none;"></span>
                     <input id="send" type="button" value="Enviar" class="button"/>
                     <input id="print" type="button" value="Print" onclick="printReclamacion()"  class="button"/>
-                    <span id="success_message" class="success"></span>					
+                    					
                 </p>	
                 <input id="newcontact" name="newcontact" type="hidden" value="1"></input>
 </div>    
